@@ -34,6 +34,7 @@ const CreateOrderForm = props => {
               name="name"
               type="text"
               id="example-text-input"
+              required
             />
           </div>
         </div>
@@ -48,6 +49,7 @@ const CreateOrderForm = props => {
               name="units"
               type="number"
               id="example-number-input"
+              required
             />
           </div>
         </div>
@@ -61,7 +63,8 @@ const CreateOrderForm = props => {
               className="form-control"
               name="orderDate"
               type="date"
-              id="example-tel-input"
+              id="example-date-input"
+              required
             />
           </div>
         </div>
