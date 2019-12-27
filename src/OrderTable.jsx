@@ -6,6 +6,7 @@ const OrderTable = ({ orders, onDelete }) => {
   const data = orders;
   const handleEdit = item => {
     alert(item.name + " has been dispatched");
+    document.getElementById("fulfil-text").innerHTML = "dispatched";
   };
   const handleDelete = item => {
     onDelete(item);
@@ -27,7 +28,7 @@ const OrderTable = ({ orders, onDelete }) => {
     {
       Header: "Fulfil",
       Cell: row => (
-        <div>
+        <div id="fulfil-text">
           <button onClick={() => handleEdit(row.original)}>Fulfil</button>
         </div>
       )
