@@ -59,7 +59,7 @@ const CreateOrderForm = props => {
             </span>
             <input
               className="form-control"
-              name="phone"
+              name="orderDate"
               type="date"
               id="example-tel-input"
             />

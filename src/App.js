@@ -14,7 +14,7 @@ class Main extends Component {
     this.state = {
       order: {
         name: "",
-        phone: "",
+        orderDate: "",
         units: ""
       },
       orderList: []
@@ -42,6 +42,7 @@ class Main extends Component {
   }
 
   handleSubmit() {
+    alert("Your Order has taken");
     this.setState(
       prevState => {
         return {

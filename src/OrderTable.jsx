@@ -16,7 +16,7 @@ const OrderTable = ({ orders }) => {
     },
     {
       Header: "Order Date",
-      accessor: "phone"
+      accessor: "orderDate"
     }
   ];
 
