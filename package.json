@@ -1,0 +1,24 @@
+{
+  "name": "sales-tool-app-built-with-react",
+  "version": "0.0.0",
+  "description": "A sample sales tool application built with React",
+  "keywords": [],
+  "homepage": "https://codesandbox.io/s/6wryr3oolw",
+  "main": "index.js",
+  "dependencies": {
+    "react-table": "6.7.6",
+    "react-router-dom": "4.2.2",
+    "react-router": "4.2.0",
+    "react-dom": "16.0.0",
+    "react": "16.0.0"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
