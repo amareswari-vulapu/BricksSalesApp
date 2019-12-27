@@ -1,29 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from "react-router-dom";
 
-import CreateOrderForm from './CreateOrderForm.jsx';
-import OrderTable from './OrderTable.jsx';
+import CreateOrderForm from "./CreateOrderForm.jsx";
+import OrderTable from "./OrderTable.jsx";
 
 /* Main Component */
 
 class Main extends Component {
-
   constructor() {
     super();
 
     this.state = {
       order: {
-        id: '',
-        name: '',
-        email: '',
-        address: '',
-        phone: '',
-        units: '',
+        name: "",
+        phone: "",
+        units: ""
       },
-      orderList: [],
-
-    }
+      orderList: []
+    };
 
     this.initialOrder = this.state.order;
 
@@ -32,82 +27,94 @@ class Main extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.resetOrderList = this.resetOrderList.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-
   }
 
   handleButton() {
-    this.props.history.push('/new');
-
-
+    this.props.history.push("/new");
   }
 
   handleChange(name, value) {
-    this.setState(
-      prevState => {
-        return (
-          {
-            order: { ...prevState.order, [name]: value }
-          }
-        )
-      }
-    )
+    this.setState(prevState => {
+      return {
+        order: { ...prevState.order, [name]: value }
+      };
+    });
   }
 
   handleSubmit() {
     this.setState(
       prevState => {
-        return (
-          {
-            orderList: [...prevState.orderList, prevState.order],
-            order: this.initialOrder
-          })
-      }, () => {
-        this.props.history.push('/');
-
+        return {
+          orderList: [...prevState.orderList, prevState.order],
+          order: this.initialOrder
+        };
+      },
+      () => {
+        this.props.history.push("/");
       }
-    )
+    );
   }
 
   resetOrderList() {
     this.setState({
       orderList: []
-    })
+    });
   }
 
   handleDelete(itemToBeDeleted) {
-
-    let updatedOrderList = this.state.orderList.filter(function (order) { return order.id !== itemToBeDeleted.id });
+    let updatedOrderList = this.state.orderList.filter(function(order) {
+      return order.id !== itemToBeDeleted.id;
+    });
     this.setState({
       orderList: updatedOrderList
-    })
+    });
   }
-
 
   renderTopButtons() {
     return (
       <div className="container">
         <div className="row col-md-8 offset-md-4   mt-4 mb-4">
-          <button className="btn btn-primary mx-2" onClick={this.handleButton}> Create New Order </button>
-          <button className="btn btn-danger mx-2" onClick={this.resetOrderList}> Delete All </button>
+          <button className="btn btn-primary mx-2" onClick={this.handleButton}>
+            {" "}
+            Create Order{" "}
+          </button>
         </div>
-      </div>)
+      </div>
+    );
   }
 
   render() {
-
     return (
       <div>
-        {this.props.history.location.pathname === '/' ? this.renderTopButtons() : null}
+        {this.props.history.location.pathname === "/"
+          ? this.renderTopButtons()
+          : null}
         <Switch>
-          <Route exact path="/" render={() => <OrderTable {...this.props} orders={this.state.orderList} onDelete={this.handleDelete} />} />
-          <Route path="/new" render={() => <CreateOrderForm {...this.props} onChange={this.handleChange} onSubmit={this.handleSubmit} />} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <OrderTable
+                {...this.props}
+                orders={this.state.orderList}
+                onDelete={this.handleDelete}
+              />
+            )}
+          />
+          <Route
+            path="/new"
+            render={() => (
+              <CreateOrderForm
+                {...this.props}
+                onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
+              />
+            )}
+          />
         </Switch>
-
       </div>
-
     );
   }
 }
 
 export default withRouter(Main);
-

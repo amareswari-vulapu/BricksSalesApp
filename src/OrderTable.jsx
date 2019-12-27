@@ -1,45 +1,27 @@
-import React from 'react';
-import ReactTable from 'react-table';
-import 'react-table/react-table.css'
+import React from "react";
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 
-const OrderTable = ({ orders, onDelete }) => {
+const OrderTable = ({ orders }) => {
   const data = orders;
-  const handleDelete = (item) => {
-    onDelete(item);
-  }
-  const columns = [{
-
-    Header: 'id',
-    accessor: 'id',
-    maxWidth: 100
-  }, {
-    Header: 'Name',
-    accessor: 'name',
-
-  }, {
-
-    Header: 'Email',
-    accessor: 'email'
-  }, {
-    Header: 'Address',
-    accessor: 'address',
-    width: 400
-  }, {
-    Header: 'Telephone',
-    accessor: 'phone'
-  }, {
-    Header: 'Units',
-    accessor: 'units',
-    maxWidth: 150
-  }, {
-    Header: 'Delete',
-    accessor: 'delete',
-    Cell: (row) => (<img src="https://res.cloudinary.com/doayqetsa/image/upload/v1514406449/delete_pfwiu5.png" onClick={() => { handleDelete(row.original) }} />),
-    maxWidth: 150
-  }]
+  const columns = [
+    {
+      Header: "Name",
+      accessor: "name"
+    },
+    {
+      Header: "No of Bricks",
+      accessor: "units",
+      maxWidth: 150
+    },
+    {
+      Header: "Order Date",
+      accessor: "phone"
+    }
+  ];
 
   return (
-    <div className='col-md-12'>
+    <div className="col-md-12">
       <ReactTable
         data={data}
         columns={columns}
@@ -47,8 +29,7 @@ const OrderTable = ({ orders, onDelete }) => {
         className="-striped -highlight"
       />
     </div>
-  )
-
-}
+  );
+};
 
 export default OrderTable;
